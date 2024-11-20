@@ -22,14 +22,23 @@ class Agenda extends Contato {
             console.log("não existe nenhum contato")
         } else { // forEach serve para mostrar o que tem dentro do array como uma forma de repetição
             this.itens.forEach(item =>{
-                console.log(item);
+                //console.log(item);
                 item.MostrarContato();
             })
         }
     }
 
-    RemoverContato(){
-        
+    RemoverContato(telefone){
+        const contato = this.itens.findIndex(u => u.telefone === telefone);
+
+        if(contato !== -1){
+            const remover = this.itens.splice(contato, 1);
+            console.log(`Contato ${remover[0].nome} removido com sucesso!`)
+        } else{
+            console.log("Usuario não encontrado.")
+        }
     }
 
-}
+} 
+
+module.exports = Agenda;
